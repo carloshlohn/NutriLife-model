@@ -1,122 +1,221 @@
 import React, { useState } from 'react';
 
 export default function Calculadora() {
+  // Estados para IMC
   const [imc, setImc] = useState(null);
+  
+  // Estados para Proteína
+  const [pesoProteina, setPesoProteina] = useState('');
+  const [nivelAtividade, setNivelAtividade] = useState('moderado');
+  const [objetivo, setObjetivo] = useState('manter');
+  const [proteinaDiaria, setProteinaDiaria] = useState(null);
+  
+  // Estados para Água
+  const [pesoAgua, setPesoAgua] = useState('');
+  const [nivelAtividadeAgua, setNivelAtividadeAgua] = useState('moderado');
+  const [aguaDiaria, setAguaDiaria] = useState(null);
 
-  function calcular(event) {
+  function calcularIMC(event) {
     event.preventDefault();
     const peso = parseFloat(event.target.peso.value);
     const altura = parseFloat(event.target.altura.value);
     const resultado = peso / (altura * altura);
     setImc(resultado);
+    
+    // Auto-preenche os pesos nas outras calculadoras
+    setPesoProteina(peso);
+    setPesoAgua(peso);
   }
 
-/**
-   * Calcula a necessidade diária de proteína
-   */
-  const calcularProteina = () => {
+  const calcularProteina = (event) => {
+    event.preventDefault();
     if (!pesoProteina || pesoProteina <= 0) {
       alert('Por favor, insira um peso válido.');
       return;
     }
 
-    // Fator base de proteína por kg (1.2g/kg para sedentário)
-    let fatorProteina = 1.2;
+    let fatorProteina = 1.2; // Base para sedentário
 
-    // Ajusta o fator baseado no nível de atividade
     switch (nivelAtividade) {
-      case 'leve':
-        fatorProteina = 1.4;
-        break;
-      case 'moderado':
-        fatorProteina = 1.6;
-        break;
-      case 'intenso':
-        fatorProteina = 2.0;
-        break;
-      default:
-        fatorProteina = 1.6;
+      case 'leve': fatorProteina = 1.4; break;
+      case 'moderado': fatorProteina = 1.6; break;
+      case 'intenso': fatorProteina = 2.0; break;
     }
 
-    // Ajusta o fator baseado no objetivo
-    switch (objetivo) {
-      case 'ganhar':
-        fatorProteina += 0.2;
-        break;
-      case 'perder':
-        fatorProteina += 0.2;
-        break;
-      default:
-        break;
+    if (objetivo === 'ganhar' || objetivo === 'perder') {
+      fatorProteina += 0.2;
     }
 
-    const proteina = (pesoProteina * fatorProteina).toFixed(1);
-    setProteinaDiaria(proteina);
+    setProteinaDiaria((pesoProteina * fatorProteina).toFixed(1));
   };
 
-  /**
-   * Calcula a necessidade diária de água
-   */
- 
-  /**
-   * Calcula a necessidade diária de água
-   */
-  const calcularAgua = () => {
+  const calcularAgua = (event) => {
+    event.preventDefault();
     if (!pesoAgua || pesoAgua <= 0) {
       alert('Por favor, insira um peso válido.');
       return;
     }
- 
- // Fator base de água (35ml/kg)
-    let fatorAgua = 35;
 
-    // Ajusta o fator baseado no nível de atividade
+    let fatorAgua = 35; // Base em ml/kg
+
     switch (nivelAtividadeAgua) {
-      case 'leve':
-        fatorAgua = 35;
-        break;
-      case 'moderado':
-        fatorAgua = 40;
-        break;
-      case 'intenso':
-        fatorAgua = 45;
-        break;
-      default:
-        fatorAgua = 35;
+      case 'moderado': fatorAgua = 40; break;
+      case 'intenso': fatorAgua = 45; break;
     }
 
-  const aguaMl = (pesoAgua * fatorAgua).toFixed(0);
-    const aguaLitros = (aguaMl / 1000).toFixed(2);
-    setAguaDiaria({ ml: aguaMl, litros: aguaLitros });
+    const aguaMl = (pesoAgua * fatorAgua).toFixed(0);
+    setAguaDiaria({
+      ml: aguaMl,
+      litros: (aguaMl / 1000).toFixed(2)
+    });
   };
 
-    
-    return (
-    <div>
-      <h1>Calculadora de IMC</h1>
-      <form onSubmit={calcular}>
-        <label>
-          Peso (kg):
-          <input type="number" name="peso" required />
-        </label>
-        <br />
-        <label>
-          Altura (m):
-          <input type="number" name="altura" step="0.01" required />
-        </label>
-        <br />
-        <button type="submit">Calcular IMC</button>
+  return (
+    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
+      <h1>Calculadora de Saúde</h1>
+      
+      {/* Calculadora de IMC */}
+      <div style={{ marginBottom: '30px', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>
+        <h2>Calculadora de IMC</h2>
+        <form onSubmit={calcularIMC}>
+          <label style={{ display: 'block', marginBottom: '10px' }}>
+            Peso (kg):
+            <input 
+              type="number" 
+              name="peso" 
+              required 
+              style={{ marginLeft: '10px', padding: '5px' }}
+            />
+          </label>
+          <label style={{ display: 'block', marginBottom: '10px' }}>
+            Altura (m):
+            <input 
+              type="number" 
+              name="altura" 
+              step="0.01" 
+              required 
+              style={{ marginLeft: '10px', padding: '5px' }}
+            />
+          </label>
+          <button 
+            type="submit" 
+            style={{ padding: '8px 15px', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '4px' }}
+          >
+            Calcular IMC
+          </button>
         </form>
-      {imc !== null && (
-        <div style={{ marginTop: '20px' }}>
-          <h3>Seu IMC é: {imc.toFixed(2)}</h3>
-          {imc < 18.5 && <p>Classificação: Magreza</p>}
-          {imc >= 18.5 && imc < 25 && <p>Classificação: Normal</p>}
-          {imc >= 25 && imc < 30 && <p>Classificação: Sobrepeso</p>}
-          {imc >= 30 && imc < 40 && <p>Classificação: Obesidade</p>}
-          {imc >= 40 && <p>Classificação: Obesidade Grave</p>}
-        </div>
-      )}
+        
+        {imc !== null && (
+          <div style={{ marginTop: '20px' }}>
+            <h3>Seu IMC é: {imc.toFixed(2)}</h3>
+            <p>
+              Classificação: {imc < 18.5 ? 'Magreza' : 
+                            imc < 25 ? 'Normal' : 
+                            imc < 30 ? 'Sobrepeso' : 
+                            imc < 40 ? 'Obesidade' : 'Obesidade Grave'}
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Calculadora de Proteína */}
+      <div style={{ marginBottom: '30px', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>
+        <h2>Necessidade Diária de Proteína</h2>
+        <form onSubmit={calcularProteina}>
+          <label style={{ display: 'block', marginBottom: '10px' }}>
+            Peso (kg):
+            <input 
+              type="number" 
+              value={pesoProteina}
+              onChange={(e) => setPesoProteina(e.target.value)}
+              required 
+              style={{ marginLeft: '10px', padding: '5px' }}
+            />
+          </label>
+          
+          <label style={{ display: 'block', marginBottom: '10px' }}>
+            Nível de Atividade:
+            <select 
+              value={nivelAtividade}
+              onChange={(e) => setNivelAtividade(e.target.value)}
+              style={{ marginLeft: '10px', padding: '5px' }}
+            >
+              <option value="leve">Leve</option>
+              <option value="moderado">Moderado</option>
+              <option value="intenso">Intenso</option>
+            </select>
+          </label>
+          
+          <label style={{ display: 'block', marginBottom: '10px' }}>
+            Objetivo:
+            <select 
+              value={objetivo}
+              onChange={(e) => setObjetivo(e.target.value)}
+              style={{ marginLeft: '10px', padding: '5px' }}
+            >
+              <option value="manter">Manter peso</option>
+              <option value="ganhar">Ganhar massa</option>
+              <option value="perder">Perder peso</option>
+            </select>
+          </label>
+          
+          <button 
+            type="submit" 
+            style={{ padding: '8px 15px', backgroundColor: '#2196F3', color: 'white', border: 'none', borderRadius: '4px' }}
+          >
+            Calcular Proteína
+          </button>
+        </form>
+        
+        {proteinaDiaria && (
+          <div style={{ marginTop: '20px' }}>
+            <h3>Você precisa de: {proteinaDiaria}g de proteína/dia</h3>
+          </div>
+        )}
+      </div>
+
+      {/* Calculadora de Água */}
+      <div style={{ padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>
+        <h2>Necessidade Diária de Água</h2>
+        <form onSubmit={calcularAgua}>
+          <label style={{ display: 'block', marginBottom: '10px' }}>
+            Peso (kg):
+            <input 
+              type="number" 
+              value={pesoAgua}
+              onChange={(e) => setPesoAgua(e.target.value)}
+              required 
+              style={{ marginLeft: '10px', padding: '5px' }}
+            />
+          </label>
+          
+          <label style={{ display: 'block', marginBottom: '10px' }}>
+            Nível de Atividade:
+            <select 
+              value={nivelAtividadeAgua}
+              onChange={(e) => setNivelAtividadeAgua(e.target.value)}
+              style={{ marginLeft: '10px', padding: '5px' }}
+            >
+              <option value="leve">Leve</option>
+              <option value="moderado">Moderado</option>
+              <option value="intenso">Intenso</option>
+            </select>
+          </label>
+          
+          <button 
+            type="submit" 
+            style={{ padding: '8px 15px', backgroundColor: '#00BCD4', color: 'white', border: 'none', borderRadius: '4px' }}
+          >
+            Calcular Água
+          </button>
+        </form>
+        
+        {aguaDiaria && (
+          <div style={{ marginTop: '20px' }}>
+            <h3>Você precisa beber: {aguaDiaria.ml}ml ({aguaDiaria.litros}L) de água/dia</h3>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
