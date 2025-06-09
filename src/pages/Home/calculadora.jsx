@@ -90,33 +90,52 @@ export default function Calculadora() {
     setAguaDiaria({ ml: aguaMl, litros: aguaLitros });
   };
 
-    
     return (
-    <div>
-      <h1>Calculadora de IMC</h1>
-      <form onSubmit={calcular}>
-        <label>
-          Peso (kg):
-          <input type="number" name="peso" required />
-        </label>
-        <br />
-        <label>
-          Altura (m):
-          <input type="number" name="altura" step="0.01" required />
-        </label>
-        <br />
-        <button type="submit">Calcular IMC</button>
-        </form>
-      {imc !== null && (
-        <div style={{ marginTop: '20px' }}>
-          <h3>Seu IMC é: {imc.toFixed(2)}</h3>
-          {imc < 18.5 && <p>Classificação: Magreza</p>}
-          {imc >= 18.5 && imc < 25 && <p>Classificação: Normal</p>}
-          {imc >= 25 && imc < 30 && <p>Classificação: Sobrepeso</p>}
-          {imc >= 30 && imc < 40 && <p>Classificação: Obesidade</p>}
-          {imc >= 40 && <p>Classificação: Obesidade Grave</p>}
-        </div>
-      )}
-    </div>
-  );
+    <div style={styles.container}>
+      <h1 style={styles.titulo}>Calculadora de Saúde Completa</h1>
+      
+      <div style={styles.calculadorasContainer}>
+        {/* Calculadora de IMC */}
+        <div style={styles.calculadora}>
+          <h2>Calculadora de IMC</h2>
+          <form onSubmit={calcularIMC} style={styles.form}>
+            <div style={styles.inputGroup}>
+              <label htmlFor="peso">Peso (kg):</label>
+              <input
+                id="peso"
+                type="number"
+                name="peso"
+                required
+                style={styles.input}
+              />
+            </div>
+            <div style={styles.inputGroup}>
+              <label htmlFor="altura">Altura (m):</label>
+              <input
+                id="altura"
+                type="number"
+                name="altura"
+                step="0.01"
+                required
+                style={styles.input}
+              />
+            </div>
+            <button type="submit" style={styles.botao}>
+              Calcular IMC
+            </button>
+          </form>
+          {imc !== null && (
+            <div style={styles.resultado}>
+              <h3>Resultado:</h3>
+              <p>Seu IMC é: <strong>{imc.toFixed(2)}</strong></p>
+              {imc < 18.5 && <p>Classificação: Magreza</p>}
+              {imc >= 18.5 && imc < 25 && <p>Classificação: Normal</p>}
+              {imc >= 25 && imc < 30 && <p>Classificação: Sobrepeso</p>}
+              {imc >= 30 && imc < 40 && <p>Classificação: Obesidade</p>}
+              {imc >= 40 && <p>Classificação: Obesidade Grave</p>}
+            </div>
+          )}
+        </div> 
+        
+   
 }
