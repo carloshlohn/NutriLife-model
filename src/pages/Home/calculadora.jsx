@@ -57,8 +57,41 @@ export default function Calculadora() {
   /**
    * Calcula a necessidade diária de água
    */
-  
-  return (
+ 
+  /**
+   * Calcula a necessidade diária de água
+   */
+  const calcularAgua = () => {
+    if (!pesoAgua || pesoAgua <= 0) {
+      alert('Por favor, insira um peso válido.');
+      return;
+    }
+ 
+ // Fator base de água (35ml/kg)
+    let fatorAgua = 35;
+
+    // Ajusta o fator baseado no nível de atividade
+    switch (nivelAtividadeAgua) {
+      case 'leve':
+        fatorAgua = 35;
+        break;
+      case 'moderado':
+        fatorAgua = 40;
+        break;
+      case 'intenso':
+        fatorAgua = 45;
+        break;
+      default:
+        fatorAgua = 35;
+    }
+
+  const aguaMl = (pesoAgua * fatorAgua).toFixed(0);
+    const aguaLitros = (aguaMl / 1000).toFixed(2);
+    setAguaDiaria({ ml: aguaMl, litros: aguaLitros });
+  };
+
+    
+    return (
     <div>
       <h1>Calculadora de IMC</h1>
       <form onSubmit={calcular}>
