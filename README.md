@@ -1,12 +1,48 @@
-# React + Vite
+# NutriLife - Aplicativo de Nutrição e Bem-Estar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+NutriLife é um aplicativo web desenvolvido em React que oferece ferramentas úteis para ajudar no controle da saúde e nutrição. O aplicativo inclui calculadoras de IMC, necessidades de proteína e hidratação diária.
 
-Currently, two official plugins are available:
+## Funcionalidades Principais
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Calculadora de IMC**: Calcula seu Índice de Massa Corporal e fornece a classificação
+- **Necessidade de Proteína**: Calcula a quantidade diária de proteína baseada em peso, nível de atividade e objetivos
+- **Hidratação Diária**: Calcula a quantidade ideal de água a ser consumida diariamente
+- **Interface Intuitiva**: Design limpo e responsivo para fácil utilização
 
-## Expanding the ESLint configuration
+## Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- Styled Components
+- JavaScript (ES6+)
+
+## Como Executar o Projeto
+
+1. Clone o repositório
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Execute o servidor de desenvolvimento:
+   ```bash
+   npm run dev
+   ```
+4. Acesse o aplicativo no navegador
+
+## Estrutura do Projeto
+
+```
+src/
+├── pages/
+│   ├── Home/
+│   │   ├── calculadora.jsx  # Componente principal com todas as calculadoras
+│   │   └── index.jsx        # Página inicial com introdução
+├── styles/
+│   ├── GlobalStyles.js      # Estilos globais
+│   └── styles.js            # Componentes estilizados
+└── main.jsx                 # Ponto de entrada da aplicação
+```
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT.
