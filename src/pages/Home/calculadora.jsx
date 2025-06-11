@@ -324,7 +324,7 @@ export default function Calculadora() {
               backgroundColor: '#f8f8f8',
               borderRadius: '4px'
             }}>
-              <h3 style={{ marginTop: 0 }}>Você precisa beber:</h3>
+              <h3 style={{ marginTop: 0 }}>Voce precisa beber:</h3>
               <p style={{ fontSize: '24px', fontWeight: 'bold', margin: '10px 0' }}>
                 {aguaDiaria.ml}ml <span style={{ fontSize: '16px' }}>({aguaDiaria.litros}L) de água/dia</span>
               </p>
