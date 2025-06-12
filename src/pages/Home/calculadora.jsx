@@ -84,7 +84,6 @@ export default function Calculadora() {
   };
 
   return (
-    <>
       <div
         style={{
           padding: "20px",
