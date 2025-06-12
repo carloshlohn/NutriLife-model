@@ -340,116 +340,83 @@ export default function Calculadora() {
             )}
           </div>
 
-          {/* Calculadora de Água */}
-          <div
-            style={{
-              flex: "1",
-              minWidth: "300px",
-              padding: "20px",
-              border: "1px solid #ddd",
-              borderRadius: "8px",
-              boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-            }}
-          >
-            <h2 style={{ color: "#00BCD4", marginTop: 0 }}>
-              Necessidade de Água
-            </h2>
-            <form onSubmit={calcularAgua}>
-              <label style={{ display: "block", marginBottom: "15px" }}>
-                <span
-                  style={{
-                    display: "block",
-                    marginBottom: "5px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Peso (kg):
-                </span>
-                <input
-                  type="number"
-                  value={pesoAgua}
-                  onChange={(e) => setPesoAgua(e.target.value)}
-                  required
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    border: "1px solid #ddd",
-                    borderRadius: "4px",
-                  }}
-                />
-              </label>
-
-              <label style={{ display: "block", marginBottom: "15px" }}>
-                <span
-                  style={{
-                    display: "block",
-                    marginBottom: "5px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Nível de Atividade:
-                </span>
-                <select
-                  value={nivelAtividadeAgua}
-                  onChange={(e) => setNivelAtividadeAgua(e.target.value)}
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    border: "1px solid #ddd",
-                    borderRadius: "4px",
-                  }}
-                >
-                  <option value="leve">Leve</option>
-                  <option value="moderado">Moderado</option>
-                  <option value="intenso">Intenso</option>
-                </select>
-              </label>
-
-              <button
-                type="submit"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  backgroundColor: "#00BCD4",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  fontWeight: "bold",
+        {/* Calculadora de Água */}
+        <div style={{ 
+          flex: '1', 
+          minWidth: '300px',
+          padding: '20px', 
+          border: '1px solid #ddd', 
+          borderRadius: '8px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}>
+          <h2 style={{ color: '#00BCD4', marginTop: 0 }}>Necessidade de Água</h2>
+          <form onSubmit={calcularAgua}>
+            <label style={{ display: 'block', marginBottom: '15px' }}>
+              <span style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Peso (kg):</span>
+              <input 
+                type="number" 
+                value={pesoAgua}
+                onChange={(e) => setPesoAgua(e.target.value)}
+                required 
+                style={{ 
+                  width: '100%',
+                  padding: '8px',
+                  border: '1px solid #ddd',
+                  borderRadius: '4px'
+                }}
+              />
+            </label>
+            
+            <label style={{ display: 'block', marginBottom: '15px' }}>
+              <span style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Nível de Atividade:</span>
+              <select 
+                value={nivelAtividadeAgua}
+                onChange={(e) => setNivelAtividadeAgua(e.target.value)}
+                style={{ 
+                  width: '100%',
+                  padding: '8px',
+                  border: '1px solid #ddd',
+                  borderRadius: '4px'
                 }}
               >
-                Calcular Água
-              </button>
-            </form>
-
-            {aguaDiaria && (
-              <div
-                style={{
-                  marginTop: "20px",
-                  padding: "15px",
-                  backgroundColor: "#f8f8f8",
-                  borderRadius: "4px",
-                }}
-              >
-                <h3 style={{ marginTop: 0 }}>Você precisa beber:</h3>
-                <p
-                  style={{
-                    fontSize: "24px",
-                    fontWeight: "bold",
-                    margin: "10px 0",
-                  }}
-                >
-                  {aguaDiaria.ml}ml{" "}
-                  <span style={{ fontSize: "16px" }}>
-                    ({aguaDiaria.litros}L) de água/dia
-                  </span>
-                </p>
-              </div>
-            )}
-          </div>
+                <option value="leve">Leve</option>
+                <option value="moderado">Moderado</option>
+                <option value="intenso">Intenso</option>
+              </select>
+            </label>
+            
+            <button 
+              type="submit" 
+              style={{ 
+                width: '100%',
+                padding: '10px',
+                backgroundColor: '#00BCD4',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontWeight: 'bold'
+              }}
+            >
+              Calcular Água
+            </button>
+          </form>
+          
+          {aguaDiaria && (
+            <div style={{ 
+              marginTop: '20px',
+              padding: '15px',
+              backgroundColor: '#f8f8f8',
+              borderRadius: '4px'
+            }}>
+              <h3 style={{ marginTop: 0 }}>Você precisa beber:</h3>
+              <p style={{ fontSize: '24px', fontWeight: 'bold', margin: '10px 0' }}>
+                {aguaDiaria.ml}ml <span style={{ fontSize: '16px' }}>({aguaDiaria.litros}L) de água/dia</span>
+              </p>
+            </div>
+          )}
         </div>
       </div>
-      <button onClick={() => Navigate("/")}>Voltar para o início</button>
-    </>
+    </div>
   );
 }
