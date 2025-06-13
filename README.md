@@ -1,48 +1,97 @@
-# NutriLife - Aplicativo de Nutrição e Bem-Estar
+# NutriLife - Aplicativo de Saúde e Bem-Estar
 
-NutriLife é um aplicativo web desenvolvido em React que oferece ferramentas úteis para ajudar no controle da saúde e nutrição. O aplicativo inclui calculadoras de IMC, necessidades de proteína e hidratação diária.
+NutriLife é uma aplicação web completa para gestão de saúde, nutrição e fitness, desenvolvida com React.js e tecnologias modernas.
 
-## Funcionalidades Principais
+## ✨ Funcionalidades Principais
 
-- **Calculadora de IMC**: Calcula seu Índice de Massa Corporal e fornece a classificação
-- **Necessidade de Proteína**: Calcula a quantidade diária de proteína baseada em peso, nível de atividade e objetivos
-- **Hidratação Diária**: Calcula a quantidade ideal de água a ser consumida diariamente
-- **Interface Intuitiva**: Design limpo e responsivo para fácil utilização
+- **Calculadora de IMC** - Avalie seu índice de massa corporal
+- **Monitoramento de Hidratação** - Calcule sua necessidade diária de água
+- **Gestão de Proteínas** - Acompanhe sua ingestão proteica ideal
+- **Planos de Treino** - Programas de exercícios personalizados
+- **Acompanhamento Nutricional** - Recomendações alimentares personalizadas
 
-## Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
-- React
-- Vite
-- Styled Components
-- JavaScript (ES6+)
+- **Frontend**:
+  - React.js
+  - Vite
+  - Styled Components
+  - React Router
+  - React Icons
 
-## Como Executar o Projeto
+- **Testes**:
+  - Jest
+  - React Testing Library
 
-1. Clone o repositório
+## 📦 Como Executar o Projeto
+
+### Pré-requisitos
+- Node.js (v16 ou superior)
+- npm ou yarn
+
+### Instalação
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/carloshlohn/NutriLife-model.git
+cd NutriLife-model
+```
+
 2. Instale as dependências:
-   ```bash
-   npm install
-   ```
-3. Execute o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
-4. Acesse o aplicativo no navegador
+```bash
+npm install
+# ou
+yarn install
+```
 
-## Estrutura do Projeto
+3. Execute o servidor de desenvolvimento:
+```bash
+npm run dev
+# ou
+yarn dev
+```
+
+4. Acesse no navegador:
+```
+http://localhost:3000
+```
+
+## 🧪 Executando Testes
+```bash
+npm test
+# ou
+yarn test
+```
+
+## 🏗️ Estrutura do Projeto
 
 ```
 src/
-├── pages/
-│   ├── Home/
-│   │   ├── calculadora.jsx  # Componente principal com todas as calculadoras
-│   │   └── index.jsx        # Página inicial com introdução
-├── styles/
-│   ├── GlobalStyles.js      # Estilos globais
-│   └── styles.js            # Componentes estilizados
-└── main.jsx                 # Ponto de entrada da aplicação
+├── assets/          # Arquivos estáticos
+├── components/      # Componentes reutilizáveis
+├── pages/           # Páginas da aplicação
+│   ├── Home/        # Página inicial
+│   ├── Calculadora/ # Calculadoras de saúde
+│   ├── Treinos/     # Programas de exercícios
+│   └── Alimentação/ # Orientação nutricional
+├── styles/          # Estilos globais
+├── App.jsx          # Componente principal
+└── main.jsx         # Ponto de entrada
 ```
 
-## Licença
+## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT.
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+
+## 🌟 Agradecimentos
+
+- [React.js](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Styled Components](https://styled-components.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+
+---
+
+<div align="center">
+  <sub>Desenvolvido por: Carlos Lohn, Murilo Ferreira, Silvia Koch Fernandes, Matheus Nunes e Lucas da Costa</sub>
+</div>
