@@ -1,6 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import { FaHeartbeat, FaTint, FaDumbbell, FaAppleAlt, FaArrowRight, FaChartLine, FaMedal } from "react-icons/fa";
+import {
+  FaHeartbeat,
+  FaTint,
+  FaDumbbell,
+  FaAppleAlt,
+  FaArrowRight,
+  FaChartLine,
+  FaMedal,
+} from "react-icons/fa";
 
 // Animations
 const fadeIn = keyframes`
@@ -23,7 +31,7 @@ const Container = styled.div`
   background: linear-gradient(135deg, #f5f7fa 0%, #e4f0f5 100%);
   padding: 3rem 2rem;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 `;
 
 const Header = styled.header`
@@ -36,12 +44,12 @@ const Title = styled.h1`
   color: #2c3e50;
   margin-bottom: 1rem;
   font-weight: 800;
-  background: linear-gradient(to right, #4CAF50, #2E7D32);
+  background: linear-gradient(to right, #4caf50, #2e7d32);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  
+
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
@@ -73,8 +81,8 @@ const FeatureCard = styled.div`
   transition: all 0.3s ease;
   text-align: center;
   animation: ${fadeIn} 0.8s ease-out;
-  border-top: 4px solid #4CAF50;
-  
+  border-top: 4px solid #4caf50;
+
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
@@ -83,7 +91,7 @@ const FeatureCard = styled.div`
 
 const FeatureIcon = styled.div`
   font-size: 2.5rem;
-  color: #4CAF50;
+  color: #4caf50;
   margin-bottom: 1.5rem;
 `;
 
@@ -110,7 +118,7 @@ const ButtonContainer = styled.div`
 `;
 
 const PrimaryButton = styled.button`
-  background: linear-gradient(to right, #4CAF50, #2E7D32);
+  background: linear-gradient(to right, #4caf50, #2e7d32);
   color: white;
   border: none;
   padding: 1.2rem 2rem;
@@ -126,7 +134,7 @@ const PrimaryButton = styled.button`
   min-width: 250px;
   justify-content: center;
   animation: ${pulse} 2s infinite;
-  
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 25px rgba(76, 175, 80, 0.4);
@@ -139,11 +147,11 @@ const PrimaryButton = styled.button`
 
 const SecondaryButton = styled(PrimaryButton)`
   background: white;
-  color: #4CAF50;
-  border: 2px solid #4CAF50;
+  color: #4caf50;
+  border: 2px solid #4caf50;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   animation: none;
-  
+
   &:hover {
     background: #f5f9f5;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -158,65 +166,75 @@ const TestimonialSection = styled.section`
   background: white;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border-left: 5px solid #4CAF50;
+  border-left: 5px solid #4caf50;
 `;
 
 function Home() {
   const navigate = useNavigate();
-  
+
   const features = [
     {
       icon: <FaHeartbeat />,
       title: "Calculadora de IMC",
-      description: "Descubra seu Índice de Massa Corporal e receba recomendações personalizadas para melhorar sua saúde"
+      description:
+        "Descubra seu Índice de Massa Corporal e receba recomendações personalizadas para melhorar sua saúde",
     },
     {
       icon: <FaTint />,
       title: "Hidratação Inteligente",
-      description: "Calcule sua necessidade diária de água baseada no seu peso, atividade física e clima"
+      description:
+        "Calcule sua necessidade diária de água baseada no seu peso, atividade física e clima",
     },
     {
       icon: <FaDumbbell />,
       title: "Planos de Treino",
-      description: "Acesse rotinas de exercícios personalizadas para diferentes níveis e objetivos"
+      description:
+        "Acesse rotinas de exercícios personalizadas para diferentes níveis e objetivos",
     },
     {
       icon: <FaAppleAlt />,
       title: "Nutrição Personalizada",
-      description: "Receba recomendações alimentares e planos nutricionais baseados no seu perfil"
+      description:
+        "Receba recomendações alimentares e planos nutricionais baseados no seu perfil",
     },
     {
       icon: <FaChartLine />,
       title: "Acompanhamento",
-      description: "Registre seu progresso e visualize gráficos de evolução dos seus indicadores de saúde"
+      description:
+        "Registre seu progresso e visualize gráficos de evolução dos seus indicadores de saúde",
     },
     {
       icon: <FaMedal />,
       title: "Desafios Diários",
-      description: "Participe de desafios para manter a motivação e criar hábitos saudáveis"
-    }
+      description:
+        "Participe de desafios para manter a motivação e criar hábitos saudáveis",
+    },
   ];
-  
+
   return (
     <Container>
       <Header>
         <Title>NutriLife</Title>
         <Subtitle>
-          Sua plataforma completa para nutrição, bem-estar e saúde. 
-          Combina ciência e tecnologia para ajudar você a alcançar seus objetivos de forma saudável e sustentável.
+          Sua plataforma completa para nutrição, bem-estar e saúde. Combina
+          ciência e tecnologia para ajudar você a alcançar seus objetivos de
+          forma saudável e sustentável.
         </Subtitle>
       </Header>
-      
+
       <FeaturesContainer>
         {features.map((feature, index) => (
-          <FeatureCard key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+          <FeatureCard
+            key={index}
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
             <FeatureIcon>{feature.icon}</FeatureIcon>
             <FeatureTitle>{feature.title}</FeatureTitle>
             <FeatureDescription>{feature.description}</FeatureDescription>
           </FeatureCard>
         ))}
       </FeaturesContainer>
-      
+
       <ButtonContainer>
         <PrimaryButton onClick={() => navigate("/Calculadora")}>
           <FaArrowRight /> Calculadoras
@@ -224,17 +242,31 @@ function Home() {
         <SecondaryButton onClick={() => navigate("/Treinos")}>
           <FaDumbbell /> Ver Treinos
         </SecondaryButton>
-        <SecondaryButton onClick={() => navigate("/Alimentação")}>
+        <SecondaryButton onClick={() => navigate("/alimentacao")}>
           <FaAppleAlt /> Planos Alimentares
         </SecondaryButton>
       </ButtonContainer>
-      
+
       <TestimonialSection>
-        <h3 style={{ color: "#2c3e50", marginBottom: "1.5rem" }}>Depoimentos de Nossos Usuários</h3>
-        <p style={{ fontStyle: "italic", color: "#555", lineHeight: "1.8", fontSize: "1.1rem" }}>
-          "Com o NutriLife, consegui perder 12kg em 4 meses de forma saudável. As calculadoras me ajudaram a entender minhas necessidades e os planos de treino foram essenciais para minha evolução física."
-          <br /><br />
-          <span style={{ fontWeight: "600", color: "#4CAF50" }}>- Carlos M., 32 anos</span>
+        <h3 style={{ color: "#2c3e50", marginBottom: "1.5rem" }}>
+          Depoimentos de Nossos Usuários
+        </h3>
+        <p
+          style={{
+            fontStyle: "italic",
+            color: "#555",
+            lineHeight: "1.8",
+            fontSize: "1.1rem",
+          }}
+        >
+          "Com o NutriLife, consegui perder 12kg em 4 meses de forma saudável.
+          As calculadoras me ajudaram a entender minhas necessidades e os planos
+          de treino foram essenciais para minha evolução física."
+          <br />
+          <br />
+          <span style={{ fontWeight: "600", color: "#4CAF50" }}>
+            - Carlos M., 32 anos
+          </span>
         </p>
       </TestimonialSection>
     </Container>
