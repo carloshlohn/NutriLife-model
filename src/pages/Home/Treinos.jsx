@@ -66,6 +66,9 @@ const Subtitle = styled.p`
   max-width: 700px;
   line-height: 1.6;
   animation: ${fadeIn} 0.8s ease-out 0.2s both;
+  text-align: center; /* Garante que o texto fique centralizado */
+  margin-left: auto; /* Centraliza horizontalmente */
+  margin-right: auto; /* Centraliza horizontalmente */
 `;
 
 const BackButton = styled.button`

@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// ===========================
+
 // Animações
 // ===========================
 const fadeIn = keyframes`
@@ -26,7 +26,7 @@ const pulse = keyframes`
   100% { transform: scale(1); }
 `;
 
-// ===========================
+
 // Estilos e Layouts
 // ===========================
 const Container = styled.div`
