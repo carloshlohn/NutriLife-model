@@ -341,11 +341,6 @@ function Alimentacao() {
         </FeatureDescription>
       </TipCard>
 
-      <ButtonContainer>
-        <PrimaryButton onClick={() => navigate("/contato")}>
-          <FaArrowRight /> Quero meu plano personalizado
-        </PrimaryButton>
-      </ButtonContainer>
     </Container>
   );
 }
