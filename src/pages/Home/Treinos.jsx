@@ -225,10 +225,12 @@ function Treinos() {
           <BackButton onClick={() => navigate("/")}>
             <FaArrowLeft /> Voltar
           </BackButton>
-          <Title>Treinamento Efetivo</Title>
-          <Subtitle>
-            Descubra planos de treino para musculação, cardio e entenda os tipos de treino na academia.
-          </Subtitle>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <Title>Treinamento Efetivo</Title>
+            <Subtitle>
+              Descubra planos de treino para musculação, cardio e entenda os tipos de treino na academia.
+            </Subtitle>
+          </div>
         </Header>
 
         <FeaturesContainer>
