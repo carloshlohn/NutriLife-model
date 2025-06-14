@@ -11,14 +11,8 @@ const fadeIn = keyframes`
 
 const pulse = keyframes`
   0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.03); }
   100% { transform: scale(1); }
-`;
-
-const pulseButton = keyframes`
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-  70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
 `;
 
 // Styled Components
@@ -34,13 +28,12 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
-  margin: 1rem 0 2rem;
+  margin: 2rem 0 3rem;
   animation: ${fadeIn} 0.8s ease-out;
-  width: 100%;
 `;
 
 const Title = styled.h1`
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: #2c3e50;
   margin-bottom: 1rem;
   font-weight: 800;
@@ -49,37 +42,28 @@ const Title = styled.h1`
   background-clip: text;
   color: transparent;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  animation: ${pulse} 3s infinite;
 
   @media (max-width: 768px) {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 `;
 
 const Subtitle = styled.p`
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: #555;
-  margin: 0 auto 2rem; /* Centraliza e mantém margin-bottom */
-  padding: 0 1rem; /* Adiciona padding nas laterais em telas pequenas */
+  margin-bottom: 2rem;
   max-width: 700px;
   line-height: 1.6;
   animation: ${fadeIn} 0.8s ease-out 0.2s both;
-  text-align: center;
-  width: 90%; /* Garante que não fique colado nas bordas */
-  
-  @media (min-width: 768px) {
-    width: 100%; /* Volta ao tamanho normal em telas maiores */
-    padding: 0;
-  }
 `;
 
 const CalculatorsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
-  margin: 1rem 0;
+  margin: 2rem 0;
 `;
 
 const CalculatorCard = styled.div`
@@ -87,38 +71,41 @@ const CalculatorCard = styled.div`
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições separadas */
   text-align: center;
   animation: ${fadeIn} 0.8s ease-out ${(props) => props.delay || "0s"} both;
   border-top: 4px solid ${(props) => props.color || "#4caf50"};
-  text-align: left;
-
+  transform-origin: center; /* Importante para o zoom */
+  
+  /* Estado normal */
+  transform: scale(1);
+  
+  /* Estado hover */
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-    animation: ${pulse} 2s ease-in-out;
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    z-index: 1;
   }
 `;
 
 const CalculatorHeader = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-bottom: 1.5rem;
 `;
 
 const CalculatorIcon = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background-color: ${(props) => props.color || "#4caf50"};
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 15px;
+  margin-bottom: 15px;
   color: white;
-  font-weight: bold;
-  font-size: 1.3rem;
-  animation: ${pulse} 3s infinite;
+  font-size: 1.5rem;
 `;
 
 const CalculatorTitle = styled.h2`
@@ -129,7 +116,8 @@ const CalculatorTitle = styled.h2`
 
 const InputLabel = styled.label`
   display: block;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
 `;
 
 const LabelText = styled.span`
@@ -142,7 +130,7 @@ const LabelText = styled.span`
 
 const InputField = styled.input`
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.8rem 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
@@ -152,32 +140,32 @@ const InputField = styled.input`
   &:focus {
     border-color: ${(props) => props.color || "#4caf50"};
     outline: none;
-    box-shadow: 0 0 0 2px ${(props) => `${props.color || "#4caf50"}20`};
-    animation: ${pulse} 1s;
+    box-shadow: 0 0 0 3px ${(props) => `${props.color || "#4caf50"}20`};
   }
 `;
 
 const SelectField = styled.select`
   width: 100%;
-  padding: 0.8rem;
+  padding: 0.8rem 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s;
   font-family: "Poppins", sans-serif;
   background-color: white;
+  cursor: pointer;
 
   &:focus {
     border-color: ${(props) => props.color || "#4caf50"};
     outline: none;
-    box-shadow: 0 0 0 2px ${(props) => `${props.color || "#4caf50"}20`};
+    box-shadow: 0 0 0 3px ${(props) => `${props.color || "#4caf50"}20`};
   }
 `;
 
 const ButtonGroup = styled.div`
   display: flex;
   gap: 0.8rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 `;
 
 const PrimaryActionButton = styled.button`
@@ -193,12 +181,10 @@ const PrimaryActionButton = styled.button`
   font-size: 0.95rem;
   transition: all 0.3s;
   font-family: "Poppins", sans-serif;
-  animation: ${pulseButton} 2s infinite;
 
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px ${(props) => `${props.color || "#4caf50"}40`};
-    animation: none;
   }
 
   &:active {
@@ -211,8 +197,6 @@ const SecondaryActionButton = styled(PrimaryActionButton)`
   color: ${(props) => props.color || "#4caf50"};
   border: 2px solid ${(props) => props.color || "#4caf50"};
   box-shadow: none;
-  padding: 0.6rem;
-  animation: none;
 
   &:hover {
     background: #f8f9f8;
@@ -269,14 +253,14 @@ const TipsList = styled.ul`
 `;
 
 const TipItem = styled.li`
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 `;
 
 const BackButton = styled.button`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 1.5rem;
+  padding: 1rem 2rem;
   background: white;
   color: #4caf50;
   border: 2px solid #4caf50;
@@ -285,40 +269,29 @@ const BackButton = styled.button`
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s;
-  margin-top: 2rem;
+  margin-top: 3rem;
   font-family: "Poppins", sans-serif;
-  animation: ${pulse} 3s infinite;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   &:hover {
     background: #f5f9f5;
-    transform: translateY(-2px);
-    animation: none;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: ${pulse} 1.5s ease infinite;
   }
 `;
 
-const InfoSection = styled.div`
+const InfoSection = styled.section`
   width: 100%;
   max-width: 800px;
-  margin: 3rem auto 1rem;
-  padding: 1.5rem;
+  margin: 4rem auto 0;
+  padding: 2.5rem;
   background: white;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   border-left: 5px solid #4caf50;
   text-align: center;
   animation: ${fadeIn} 0.8s ease-out;
-
-  &:hover {
-    animation: ${pulse} 2s ease-in-out;
-  }
-`;
-
-const InfoText = styled.p`
-  color: #555;
-  max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.6;
-  font-size: 0.95rem;
 `;
 
 export default function Calculadora() {
@@ -340,7 +313,6 @@ export default function Calculadora() {
   const [nivelAtividadeAgua, setNivelAtividadeAgua] = useState("moderado");
   const [aguaDiaria, setAguaDiaria] = useState(null);
 
-  // Efeito para classificar o IMC quando ele muda
   useEffect(() => {
     if (imc !== null) {
       let classificacao = "";
@@ -348,19 +320,19 @@ export default function Calculadora() {
 
       if (imc < 18.5) {
         classificacao = "Magreza";
-        cor = "#FFC107"; // Amarelo
+        cor = "#FFC107";
       } else if (imc < 25) {
         classificacao = "Normal";
-        cor = "#4CAF50"; // Verde
+        cor = "#4CAF50";
       } else if (imc < 30) {
         classificacao = "Sobrepeso";
-        cor = "#FF9800"; // Laranja
+        cor = "#FF9800";
       } else if (imc < 40) {
         classificacao = "Obesidade";
-        cor = "#F44336"; // Vermelho
+        cor = "#F44336";
       } else {
         classificacao = "Obesidade Grave";
-        cor = "#D32F2F"; // Vermelho escuro
+        cor = "#D32F2F";
       }
 
       setClassificacaoImc(classificacao);
@@ -370,40 +342,36 @@ export default function Calculadora() {
 
   function calcularIMC(event) {
     event.preventDefault();
-    const peso = parseFloat(event.target.peso.value);
-    const altura = parseFloat(event.target.altura.value);
+    const form = event.target;
+    const peso = parseFloat(form.peso.value);
+    const altura = parseFloat(form.altura.value);
 
     if (isNaN(peso)) {
       alert("Por favor, insira um peso válido.");
       return;
     }
 
-    if (isNaN(altura)) {
+    if (isNaN(altura) || altura <= 0) {
       alert("Por favor, insira uma altura válida.");
-      return;
-    }
-
-    if (altura <= 0) {
-      alert("A altura deve ser maior que zero.");
       return;
     }
 
     const resultado = peso / (altura * altura);
     setImc(resultado);
-
-    // Auto-preenche os pesos nas outras calculadoras
-    setPesoProteina(peso);
-    setPesoAgua(peso);
+    setPesoProteina(peso.toString());
+    setPesoAgua(peso.toString());
   }
 
   const calcularProteina = (event) => {
     event.preventDefault();
-    if (!pesoProteina || pesoProteina <= 0) {
+    const peso = parseFloat(pesoProteina);
+
+    if (isNaN(peso) || peso <= 0) {
       alert("Por favor, insira um peso válido.");
       return;
     }
 
-    let fatorProteina = 1.2; // Base para sedentário
+    let fatorProteina = 1.2;
 
     switch (nivelAtividade) {
       case "leve":
@@ -425,17 +393,19 @@ export default function Calculadora() {
       fatorProteina += 0.2;
     }
 
-    setProteinaDiaria((pesoProteina * fatorProteina).toFixed(1));
+    setProteinaDiaria((peso * fatorProteina).toFixed(1));
   };
 
   const calcularAgua = (event) => {
     event.preventDefault();
-    if (!pesoAgua || pesoAgua <= 0) {
+    const peso = parseFloat(pesoAgua);
+
+    if (isNaN(peso) || peso <= 0) {
       alert("Por favor, insira um peso válido.");
       return;
     }
 
-    let fatorAgua = 35; // Base em ml/kg
+    let fatorAgua = 35;
 
     switch (nivelAtividadeAgua) {
       case "leve":
@@ -451,11 +421,11 @@ export default function Calculadora() {
         fatorAgua = 40;
     }
 
-    const aguaMl = (pesoAgua * fatorAgua).toFixed(0);
+    const aguaMl = (peso * fatorAgua).toFixed(0);
     setAguaDiaria({
       ml: aguaMl,
       litros: (aguaMl / 1000).toFixed(2),
-      copos: Math.ceil(aguaMl / 250), // Considerando copos de 250ml
+      copos: Math.ceil(aguaMl / 250),
     });
   };
 
@@ -485,7 +455,7 @@ export default function Calculadora() {
         <CalculatorCard delay="0s" color="#4CAF50">
           <CalculatorHeader>
             <CalculatorIcon color="#4CAF50">
-              <FaHeartbeat />
+              <FaHeartbeat style={{ background: 'transparent', fill: 'currentColor' }} />
             </CalculatorIcon>
             <CalculatorTitle color="#4CAF50">Índice de Massa Corporal</CalculatorTitle>
           </CalculatorHeader>
@@ -500,6 +470,7 @@ export default function Calculadora() {
                 step="0.1"
                 required
                 color="#4CAF50"
+                placeholder="Ex: 68.5"
               />
             </InputLabel>
             <InputLabel>
@@ -511,6 +482,7 @@ export default function Calculadora() {
                 step="0.01"
                 required
                 color="#4CAF50"
+                placeholder="Ex: 1.75"
               />
             </InputLabel>
             
@@ -591,6 +563,7 @@ export default function Calculadora() {
                 step="0.1"
                 required
                 color="#2196F3"
+                placeholder="Ex: 68.5"
               />
             </InputLabel>
 
@@ -675,6 +648,7 @@ export default function Calculadora() {
                 step="0.1"
                 required
                 color="#00BCD4"
+                placeholder="Ex: 68.5"
               />
             </InputLabel>
 
@@ -734,13 +708,13 @@ export default function Calculadora() {
 
       <InfoSection>
         <h3 style={{ color: "#2c3e50", marginTop: 0 }}>Importância da Saúde</h3>
-        <InfoText>
+        <p style={{ color: "#555", lineHeight: "1.8" }}>
           Manter uma alimentação balanceada, hidratação adequada e praticar
           exercícios regularmente são pilares fundamentais para uma vida
           saudável. Estas calculadoras fornecem estimativas baseadas em
           diretrizes nutricionais, mas sempre consulte um profissional de saúde
           para orientações personalizadas.
-        </InfoText>
+        </p>
       </InfoSection>
 
       <BackButton onClick={() => navigate("/")}>
