@@ -268,11 +268,13 @@ function Alimentacao() {
         <BackButton onClick={() => navigate("/")}>
           <FaArrowLeft /> Voltar
         </BackButton>
-        <Title>Nutrição Inteligente</Title>
-        <Subtitle>
-          Descubra planos alimentares personalizados e aprenda a se alimentar 
-          de forma saudável e sustentável para atingir seus objetivos.
-        </Subtitle>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <Title>Nutrição Inteligente</Title>
+          <Subtitle>
+            Descubra planos alimentares personalizados e aprenda a se alimentar 
+            de forma saudável e sustentável para atingir seus objetivos.
+          </Subtitle>
+        </div>
       </Header>
 
       <FeaturesContainer>
@@ -335,8 +337,8 @@ function Alimentacao() {
       </FeatureCard>
 
       <TipCard>
-        <FeatureTitle style={{ color: '#2c3e50', textAlign: 'left' }}>Dica do Nutricionista</FeatureTitle>
-        <FeatureDescription style={{ textAlign: 'left' }}>
+        <FeatureTitle style={{ color: '#2c3e50', textAlign: 'center' }}>Dica do Nutricionista</FeatureTitle>
+        <FeatureDescription style={{ textAlign: 'center' }}>
           "Mastigue bem os alimentos e coma sem pressa. Isso melhora a digestão e ajuda a reconhecer a saciedade, evitando excessos."
         </FeatureDescription>
       </TipCard>
